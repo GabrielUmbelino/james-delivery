@@ -1,0 +1,31 @@
+@import ../../../../variables
+
+.card
+  color: $textColor
+  margin-bottom: 10px
+  border: 1px solid #F9F9F9
+  box-sizing: border-box
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05)
+  border-radius: 5px
+  cursor: pointer
+  transition: box-shadow .2s ease
+  &:hover
+    box-shadow: 0px 1.2px 1.2px rgba(0, 0, 0, .2)
+  .media-left
+    figure.image
+      width: 74px
+      border-radius: 3px
+      overflow: hidden
+  .media-content
+    margin: 1rem 0
+    .subtitle
+      font-weight: normal
+      strong
+        color: $textColor
+        font-weight: 600
+        &::after
+          content: ""
+          border-right: 1px solid #D3D5E0
+          height: 9px
+          display: inline-block
+          margin: 0 6px 0 10px

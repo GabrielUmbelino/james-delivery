@@ -1,0 +1,18 @@
+<div class="card" (click)="onTapEstablishment(establishment.id)">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image">
+          <img [src]="establishment.picture" [alt]="establishment.name">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title">
+          {{ establishment.name }} <span class="subtitle"> {{ establishment.index }} </span>
+        </p>
+        <p class="subtitle">
+          <strong>{{address.city}}</strong> {{address.street}}, {{address.houseNumber}}
+        </p>
+      </div>
+    </div>
+  </div>
