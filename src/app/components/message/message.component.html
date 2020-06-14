@@ -1,0 +1,10 @@
+<article class="message is-{{status}}" *ngIf="show">
+  <div class="message-header" >
+    <p *ngIf="message">{{title}}</p>
+    <button class="delete" aria-label="delete" (click)="close()"></button>
+  </div>
+  <div class="message-body" *ngIf="message">
+    {{message}}
+  </div>
+</article>
+<div class="overlay" *ngIf="show"></div>
