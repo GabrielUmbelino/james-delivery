@@ -1,0 +1,55 @@
+@import ../../../variables
+
+.card
+  color: $textColor
+  margin-bottom: 10px
+  border: 1px solid #F9F9F9
+  box-sizing: border-box
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05)
+  border-radius: 5px
+  transition: box-shadow .2s ease
+  &:hover
+    box-shadow: 0px 1.2px 1.2px rgba(0, 0, 0, .2)
+  .media-left
+    display: flex
+    .go-back
+      cursor: pointer
+      height: 23px
+      align-content: center
+      display: flex
+      margin: auto
+      margin-right: 25px
+      padding: 5px 5px
+    figure.image
+      width: 74px
+      border-radius: 3px
+      overflow: hidden
+  .media-content
+    margin: 1rem 0
+    .title
+      color: $StrongTextColor
+      font-size: 1.2rem
+      .subtitle
+        color: $textColor
+        font-size: 1rem
+  .columns
+    margin-top: .5rem
+    margin-bottom: .5rem
+    .column
+      padding: 0.5rem 0.75rem
+    &:last-child
+      margin-top: 2rem
+    .select
+      width: 100%
+      select
+        max-width: 100%
+        width: 100%
+    .field
+      .control
+        .columns
+          margin: 0
+          .column
+            padding: 0rem 0.25rem
+    .button.is-success
+      padding: 13px 30px
+

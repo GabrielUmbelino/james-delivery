@@ -1,0 +1,172 @@
+<div class="card">
+  <div class="card-content" *ngIf="!loading; else loadingCard">
+    <div class="media">
+      <div class="media-left">
+        <a class="go-back" (click)="goBack()">
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5924 4.82723H4.42716L6.25878 2.95095C6.70754 2.49122 6.70754 1.74584 6.25878 1.28618C5.81 0.826445 5.08238 0.826445 4.63362 1.28618L0.841599 5.17067C0.392839 5.63033 0.392839 6.37571 0.841599 6.83545L4.63362 10.72C5.08238 11.1796 5.81 11.1796 6.25878 10.72C6.70754 10.2602 6.70754 9.51483 6.25878 9.05517L4.42716 7.17898H18.5924C19.2301 7.17898 19.7468 6.65609 19.7468 6.01119V5.99501C19.7468 5.35011 19.2301 4.82723 18.5924 4.82723Z" fill="#363840"/>
+          </svg>
+        </a>
+        <figure class="image">
+          <img [src]="establishment.picture" [alt]="establishment.name">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title">
+          {{ establishment.name }}
+        </p>
+        <p class="subtitle">
+          ID: {{ establishment.index }}
+        </p>
+      </div>
+    </div>
+    <form [formGroup]="establishmentForm" (ngSubmit)="onSubmit()">
+      <div class="columns is-mobile is-multiline is-centered">
+        <div class="column is-12">
+          <p class="form-title is-4">
+            Informações Básicas
+          </p>
+          <hr />
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Nome</label>
+            <div class="control">
+              <input class="input  {{getInputClass('name')}}" type="text" formControlName="name">
+            </div>
+          </div>
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">City</label>
+            <div class="control">
+              <input class="input  {{getInputClass('city')}}" type="text" formControlName="city">
+            </div>
+          </div>
+
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Endereço</label>
+            <div class="control">
+              <input class="input  {{getInputClass('street')}}" type="text" formControlName="street">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-mobile is-multiline is-centered">
+        <div class="column is-12">
+          <p class="form-title is-4">
+            Financeiro
+          </p>
+          <hr />
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Banco</label>
+            <div class="control">
+              <div class="select {{getInputClass('bank')}}">
+                <select formControlName="bank">
+                  <option value="brasil">Banco do Brasil</option>
+                  <option value="bradesco">Bradesco</option>
+                  <option value="itau">Itaú</option>
+                  <option value="nubank">Nubank</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Tipo de conta</label>
+            <div class="control">
+              <div class="select {{getInputClass('accountType')}}">
+                <select formControlName="accountType">
+                  <option value="corrente">Conta Corrente</option>
+                  <option value="poupanca">Conta Poupança</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">CPF / CNPJ</label>
+            <div class="control">
+              <input class="input  {{getInputClass('cpfCnpj')}}" type="text" formControlName="cpfCnpj" [mask]="cpfCnpjMask" (keypress)="changeCpfCnpj($event)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns  is-multiline is-centered">
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Agência</label>
+            <div class="control">
+              <div class="columns is-mobile is-tablet is-desktop">
+                <div class="column is-9-desktop is-9-tablet is-8-mobile">
+                  <input class="input  {{getInputClass('agency')}}" type="text" formControlName="agency" mask="0000" />
+                </div>
+                <div class="column is-3-desktop is-3-tablet is-4-mobile">
+                  <input class="input  {{getInputClass('agencyDigit')}}" type="text" formControlName="agencyDigit" mask="0" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Conta</label>
+            <div class="control">
+              <div class="columns is-mobile is-tablet is-desktop">
+                <div class="column is-9-desktop is-9-tablet is-8-mobile">
+                  <input class="input  {{getInputClass('account')}}" type="text" formControlName="account" mask="0000" />
+                </div>
+                <div class="column is-3-desktop is-3-tablet is-4-mobile">
+                  <input class="input  {{getInputClass('accountDigit')}}" type="text" formControlName="accountDigit" mask="0"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4-desktop is-12-mobile">
+          <div class="field">
+            <label class="label">Saque automático?</label>
+            <div class="control">
+              <div class="select {{getInputClass('automaticWithdraw')}}">
+                <select formControlName="automaticWithdraw">
+                  <option value="yes">Sim</option>
+                  <option value="no">Não</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-mobile is-multiline is-centered">
+        <div class="column is-12">
+          <button [disabled]="!establishmentForm.valid" class="button is-success is-rounded is-pulled-right">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-template #loadingCard>
+    <div class="card-content">
+      <p class="subtitle is-6">
+        carregando...
+      </p>
+      <progress class="progress is-small is-primary" max="100">15%</progress>
+    </div>
+  </ng-template>
+</div>
+<app-message *ngIf="message"
+  [title]="message.title"
+  [message]="message.message"
+  [status]="message.status"
+  [show]="message.show"
+  (closed)="onMessageClosed()"
+></app-message>
