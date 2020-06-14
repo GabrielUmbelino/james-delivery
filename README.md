@@ -9,5 +9,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Deploy
 
- `ng build --prod --base-href https://gabrielumbelino.github.io/james-delivery/`
+ `npm run deploy`
 
