@@ -23,7 +23,7 @@ export class EstablishmentCardComponent {
     };
   }
 
-  onTapEstablishment(establishmentId: number): void {
+  onTapEstablishment(establishmentId: string): void {
     this.router.navigate(['/establishment', establishmentId]);
   }
 
