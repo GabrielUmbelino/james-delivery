@@ -20,5 +20,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Deploy
  `npm install -g angular-cli-ghpages`
+
  `ng build --prod --base-href https://gabrielumbelino.github.io/james-delivery/`
 
