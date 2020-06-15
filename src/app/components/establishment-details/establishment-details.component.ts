@@ -8,7 +8,6 @@ interface Address {
   street: string;
   state: string;
   city: string;
-  houseNumber: number;
 }
 
 @Component({
@@ -124,16 +123,16 @@ export class EstablishmentDetailsComponent implements OnInit {
 
     const [street, state, city, houseNumber] = this.establishment.address.split(',');
     return {
-      street,
+      street: `${street}, ${houseNumber}`,
       state,
       city,
-      houseNumber: parseInt(houseNumber, 10)
     };
   }
 
   set address(address: Address) {
-    const { street, state, city, houseNumber } = address;
-    this.establishment.address = [street, state, city, houseNumber].join(',');
+    const { street, state, city } = address;
+    const [streetName, streetNumber] = street.split(',');
+    this.establishment.address = [streetName, state, city, streetNumber].join(',');
   }
 
   changeCpfCnpj(event: Event) {
