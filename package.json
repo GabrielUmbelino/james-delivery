@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint",
-    "deploy": "ng build --prod --base-href https://gabrielumbelino.github.io/james-delivery/  "
+    "deploy": "ng build --prod --base-href https://gabrielumbelino.github.io/james-delivery/ && ngh --dir=dist/establishment-ng"
   },
   "private": true,
   "dependencies": {
